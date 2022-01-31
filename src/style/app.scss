@@ -1,0 +1,65 @@
+.check {
+    display: none;
+
+    &Sign {
+        --size: 1.25rem;
+        width: var(--size);
+        height: var(--size);
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--CheckBackground);
+        border-radius: 50%;
+
+        &:after {
+            --size: 100%;
+            content: "";
+            width: var(--size);
+            height: var(--size);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgb(36, 36, 36);
+            border-radius: 50%;
+            border: 2px solid white;
+            transition: width 200ms ease,
+                        height 200ms ease,
+                        transform 200ms ease,
+                        border-color 200ms ease,
+                        opacity 200ms ease;
+        }
+
+        & > img {
+            opacity: 0;
+            transition: opacity 200ms ease;
+        }
+
+        &:hover {
+            &::after {
+                --size: calc(100% - 4px);
+                border-color: transparent;
+            }
+        }
+
+        
+    }
+
+    &:checked {
+        & ~ .checkSign {
+            &::after {
+                opacity: 0;
+            }
+            & > img {
+                opacity: 1;
+            }
+        }
+
+        & ~ .checkP {
+            text-decoration: line-through;
+            opacity: .25;
+        }
+    }
+    
+}

@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {    
+    .removeMain {
+        @apply opacity-0 active:scale-75;
+    }
+    .remove:hover > .removeMain {
+        @apply opacity-100;
+    }
+
+    .tabItem:checked + .tabItemLabel {
+        @apply text-blue-500;
+    }
+}

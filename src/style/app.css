@@ -1,0 +1,64 @@
+.check {
+  display: none;
+}
+
+.checkSign {
+  --size: 1.25rem;
+  width: var(--size);
+  height: var(--size);
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background: var(--CheckBackground);
+  border-radius: 50%;
+}
+
+.checkSign:after {
+  --size: 100%;
+  content: "";
+  width: var(--size);
+  height: var(--size);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #242424;
+  border-radius: 50%;
+  border: 2px solid white;
+  -webkit-transition: width 200ms ease, height 200ms ease, border-color 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
+  transition: width 200ms ease, height 200ms ease, border-color 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
+  transition: width 200ms ease, height 200ms ease, transform 200ms ease, border-color 200ms ease, opacity 200ms ease;
+  transition: width 200ms ease, height 200ms ease, transform 200ms ease, border-color 200ms ease, opacity 200ms ease, -webkit-transform 200ms ease;
+}
+
+.checkSign > img {
+  opacity: 0;
+  -webkit-transition: opacity 200ms ease;
+  transition: opacity 200ms ease;
+}
+
+.checkSign:hover::after {
+  --size: calc(100% - 4px);
+  border-color: transparent;
+}
+
+.check:checked ~ .checkSign::after {
+  opacity: 0;
+}
+
+.check:checked ~ .checkSign > img {
+  opacity: 1;
+}
+
+.check:checked ~ .checkP {
+  text-decoration: line-through;
+  opacity: .25;
+}
